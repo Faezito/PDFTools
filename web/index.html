@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF Converter</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="logo">PDF</div>
+      <div>
+        <h1>PDF Converter</h1>
+        <p>Conversão em lote de documentos PDF para imagens PNG</p>
+      </div>
+    </header>
+
+    <section class="panel">
+      <h2>Pastas</h2>
+      <label for="sourceDir">Pasta de origem</label>
+      <input id="sourceDir" type="text" placeholder="Ex.: C:\Documentos\PDFs ou /home/usuario/pdfs">
+
+      <label for="outputDir">Pasta de destino</label>
+      <input id="outputDir" type="text" placeholder="Ex.: C:\Documentos\Imagens ou /home/usuario/imagens">
+      <p class="hint">Informe caminhos locais. A seleção por diálogo de pastas será adicionada depois.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Configurações</h2>
+      <div class="grid">
+        <div>
+          <label for="dpi">Resolução (DPI)</label>
+          <select id="dpi">
+            <option>100</option>
+            <option>150</option>
+            <option selected>200</option>
+            <option>300</option>
+          </select>
+        </div>
+        <div>
+          <label for="organization">Organização das imagens</label>
+          <select id="organization">
+            <option value="per-pdf">Uma pasta para cada PDF</option>
+            <option value="single">Todas na mesma pasta</option>
+          </select>
+        </div>
+      </div>
+      <label class="check">
+        <input id="preserveFolders" type="checkbox" checked>
+        Preservar a estrutura das subpastas da origem
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>Conversão</h2>
+      <div class="status-line">
+        <span id="statusText">Aguardando conversão</span>
+        <span id="percent">0%</span>
+      </div>
+      <progress id="progress" value="0" max="100"></progress>
+      <div class="actions">
+        <button id="startButton" class="primary">Iniciar conversão</button>
+        <button id="cancelButton" class="secondary" disabled>Cancelar</button>
+      </div>
+      <pre id="report" aria-live="polite">O relatório aparecerá aqui.</pre>
+    </section>
+    <footer>Processamento local — seus arquivos permanecem no computador.</footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
